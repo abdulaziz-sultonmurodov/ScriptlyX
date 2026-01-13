@@ -4,7 +4,7 @@
  * Run: npm run package
  */
 
-import { createWriteStream, existsSync, mkdirSync, readdirSync, statSync } from 'fs';
+import { createWriteStream, existsSync, mkdirSync, readFileSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import archiver from 'archiver';
@@ -13,8 +13,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 
+// Read version from manifest.json
+const manifest = JSON.parse(readFileSync(join(rootDir, 'manifest.json'), 'utf-8'));
+const version = manifest.version;
+
 const distDir = join(rootDir, 'dist');
-const zipPath = join(distDir, 'scriptlyx-v1.0.0.zip');
+const zipPath = join(distDir, `scriptlyx-v${version}.zip`);
 
 // Files/folders to include in the package
 const includeList = [
@@ -34,7 +38,7 @@ const output = createWriteStream(zipPath);
 const archive = archiver('zip', { zlib: { level: 9 } });
 
 output.on('close', () => {
-  console.log(`\nPackage created: dist/scriptlyx-v1.0.0.zip`);
+  console.log(`\nPackage created: dist/scriptlyx-v${version}.zip`);
   console.log(`Total size: ${(archive.pointer() / 1024).toFixed(2)} KB`);
   console.log('\nNext steps:');
   console.log('1. Go to https://chrome.google.com/webstore/devconsole');
