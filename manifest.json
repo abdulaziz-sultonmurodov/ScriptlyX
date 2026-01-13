@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "ScriptlyX - Translate & Transliterate",
+  "version": "1.0.0",
+  "description": "Translate and transliterate text between English, Russian, and Uzbek. Right-click to convert Latin ↔ Cyrillic instantly.",
+
+  "permissions": ["contextMenus", "activeTab", "scripting", "storage"],
+
+  "host_permissions": [],
+
+  "background": {
+    "service_worker": "build/background/service-worker.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["build/content/content-script.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    },
+    "default_title": "ScriptlyX - Translate & Transliterate"
+  },
+
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+
+  "homepage_url": "https://github.com/user/scriptlyx",
+
+  "minimum_chrome_version": "100"
+}

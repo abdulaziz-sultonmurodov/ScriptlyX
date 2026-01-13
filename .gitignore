@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+
+# Package lock (optional, remove if you want to commit it)
+# package-lock.json

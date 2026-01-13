@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScriptlyX</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">ScriptlyX</h1>
+        <p class="subtitle">Translate & Transliterate</p>
+      </header>
+
+      <main class="main">
+        <!-- Enable/Disable Toggle -->
+        <div class="setting-row">
+          <label class="setting-label" for="enabled">
+            <span class="setting-text">Enable Extension</span>
+            <span class="setting-hint">Show context menu options</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="enabled" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <!-- Notifications Toggle -->
+        <div class="setting-row">
+          <label class="setting-label" for="notifications">
+            <span class="setting-text">Show Notifications</span>
+            <span class="setting-hint">Alert on errors</span>
+          </label>
+          <label class="toggle">
+            <input type="checkbox" id="notifications" checked />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <button class="tab active" data-tab="translate">Translate</button>
+          <button class="tab" data-tab="transliterate">Transliterate</button>
+        </div>
+
+        <!-- Translate Tab -->
+        <div id="translate-tab" class="tab-content active">
+          <div class="language-row">
+            <select id="source-lang" class="lang-select">
+              <option value="en">English</option>
+              <option value="ru">Russian</option>
+              <option value="uz-latn">Uzbek (Latin)</option>
+              <option value="uz-cyrl">Uzbek (Cyrillic)</option>
+            </select>
+            <span class="arrow">→</span>
+            <select id="target-lang" class="lang-select">
+              <option value="ru" selected>Russian</option>
+              <option value="en">English</option>
+              <option value="uz-latn">Uzbek (Latin)</option>
+              <option value="uz-cyrl">Uzbek (Cyrillic)</option>
+            </select>
+          </div>
+          <textarea
+            id="translate-input"
+            class="test-input"
+            placeholder="Enter text to translate..."
+            rows="3"
+          ></textarea>
+          <button id="btn-translate" class="btn btn-primary btn-full">
+            Translate
+          </button>
+          <div id="translate-output" class="test-output"></div>
+        </div>
+
+        <!-- Transliterate Tab -->
+        <div id="transliterate-tab" class="tab-content">
+          <div class="script-select">
+            <select id="script-type" class="lang-select full-width">
+              <option value="latin-to-cyrillic">
+                Russian: Latin → Cyrillic
+              </option>
+              <option value="cyrillic-to-latin">
+                Russian: Cyrillic → Latin
+              </option>
+              <option value="uz-latn-to-uz-cyrl">
+                Uzbek: Latin → Cyrillic
+              </option>
+              <option value="uz-cyrl-to-uz-latn">
+                Uzbek: Cyrillic → Latin
+              </option>
+            </select>
+          </div>
+          <textarea
+            id="translit-input"
+            class="test-input"
+            placeholder="Enter text to transliterate..."
+            rows="3"
+          ></textarea>
+          <button id="btn-translit" class="btn btn-primary btn-full">
+            Transliterate
+          </button>
+          <div id="translit-output" class="test-output"></div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Supported Languages -->
+        <details class="mapping-details">
+          <summary class="mapping-summary">Supported Languages</summary>
+          <div class="lang-list">
+            <div class="lang-item">
+              <span class="lang-flag">🇬🇧</span>
+              <span class="lang-name">English</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-flag">🇷🇺</span>
+              <span class="lang-name">Russian (Русский)</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-flag">🇺🇿</span>
+              <span class="lang-name">Uzbek Latin (O'zbek)</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-flag">🇺🇿</span>
+              <span class="lang-name">Uzbek Cyrillic (Ўзбек)</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Character Mappings -->
+        <details class="mapping-details">
+          <summary class="mapping-summary">Character Mappings</summary>
+          <div class="mapping-tabs">
+            <button class="mapping-tab active" data-mapping="russian">
+              Russian
+            </button>
+            <button class="mapping-tab" data-mapping="uzbek">Uzbek</button>
+          </div>
+          <div class="mapping-grid" id="mapping-grid">
+            <!-- Populated by JavaScript -->
+          </div>
+        </details>
+      </main>
+
+      <footer class="footer">
+        <p class="version">v1.0.0</p>
+      </footer>
+    </div>
+
+    <script src="../../build/popup/popup.js" type="module"></script>
+  </body>
+</html>

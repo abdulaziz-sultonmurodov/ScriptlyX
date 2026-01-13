@@ -1,0 +1,23 @@
+{
+  "name": "scriptly-x",
+  "version": "1.0.0",
+  "description": "Convert text between Latin and Cyrillic scripts instantly",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "clean": "rimraf build dist",
+    "icons": "node scripts/create-placeholder-icons.js",
+    "package": "npm run build && node scripts/package.js",
+    "prepare": "npm run icons && npm run build"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.260",
+    "archiver": "^7.0.1",
+    "esbuild": "^0.20.0",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
+  },
+  "author": "",
+  "license": "MIT"
+}
