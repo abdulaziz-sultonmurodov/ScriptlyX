@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/icons/icon-128.png" alt="ScriptlyX Logo" width="128" height="128">
+</p>
+
 # ScriptlyX
 
 A Chrome extension for translating and transliterating text between English, Russian, and Uzbek. Right-click any selected text to convert Latin ↔ Cyrillic instantly.
